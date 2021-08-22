@@ -9,11 +9,60 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var coloredView: UIView!
+    
+    @IBOutlet weak var redLabel: UILabel!
+    @IBOutlet weak var greenLabel: UILabel!
+    @IBOutlet weak var blueLabel: UILabel!
+    
+    @IBOutlet weak var redSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet weak var blueSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        coloredView.layer.cornerRadius = 20
+        coloredView.layer.borderWidth = 1
+        coloredView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        
+        redSlider.value = 0.3
+        greenSlider.value = 0.5
+        blueSlider.value = 0.7
+        
+        paintView()
+        setLabelValue()
+    }
+    
+    @IBAction func masterSlider(_ sender: UISlider) {
+        switch sender.tag {
+        case 0:
+            redLabel.text = string(from: sender)
+        case 1:
+            greenLabel.text = string(from: sender)
+        default:
+            blueLabel.text = string(from: sender)
+        }
+        
+        paintView()
+    }
+    
+    private func setLabelValue() {
+        redLabel.text = string(from: redSlider)
+        greenLabel.text = string(from: greenSlider)
+        blueLabel.text = string(from: blueSlider)
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        return String(format: "%.2f", slider.value)
     }
 
-
+    private func paintView() {
+        coloredView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                              green: CGFloat(greenSlider.value),
+                                              blue: CGFloat(blueSlider.value),
+                                              alpha: 1)
+    }
+    
 }
 
