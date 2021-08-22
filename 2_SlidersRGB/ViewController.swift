@@ -26,9 +26,9 @@ class ViewController: UIViewController {
         coloredView.layer.borderWidth = 1
         coloredView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         
-        redSlider.value = 0.3
+        redSlider.value = 0.2
         greenSlider.value = 0.5
-        blueSlider.value = 0.7
+        blueSlider.value = 0.8
         
         paintView()
         setLabelValue()
@@ -37,23 +37,23 @@ class ViewController: UIViewController {
     @IBAction func masterSlider(_ sender: UISlider) {
         switch sender.tag {
         case 0:
-            redLabel.text = string(from: sender)
+            redLabel.text = convertToString(from: sender)
         case 1:
-            greenLabel.text = string(from: sender)
+            greenLabel.text = convertToString(from: sender)
         default:
-            blueLabel.text = string(from: sender)
+            blueLabel.text = convertToString(from: sender)
         }
         
         paintView()
     }
     
     private func setLabelValue() {
-        redLabel.text = string(from: redSlider)
-        greenLabel.text = string(from: greenSlider)
-        blueLabel.text = string(from: blueSlider)
+        redLabel.text = convertToString(from: redSlider)
+        greenLabel.text = convertToString(from: greenSlider)
+        blueLabel.text = convertToString(from: blueSlider)
     }
     
-    private func string(from slider: UISlider) -> String {
+    private func convertToString(from slider: UISlider) -> String {
         return String(format: "%.2f", slider.value)
     }
 
