@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SlidersViewController: UIViewController {
 
     @IBOutlet weak var coloredView: UIView!
     
